@@ -5,10 +5,10 @@ FROM node:lts-alpine AS frontend-builder
 WORKDIR /src
 
 # Install git and pnpm
-RUN apk add --no-cache git && npm install -g pnpm
+RUN apk add --no-cache git ca-certificates && npm install -g pnpm
 
 # Pull the latest Vikunja source code
-RUN git clone --depth 1 https://code.vikunja.io/vikunja.git .
+RUN git clone --depth 1 https://github.com/go-vikunja/vikunja.git .
 
 # Move to frontend, install deps, and build with your custom path
 WORKDIR /src/frontend
