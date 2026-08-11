@@ -57,3 +57,4 @@ RUN chmod +x /app/vikunja
 EXPOSE 3456
 
 CMD ["/app/vikunja"]
+
