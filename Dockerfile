@@ -1,7 +1,7 @@
 # ==========================================
 # STAGE 1: Build the Frontend with Custom Path
 # ==========================================
-FROM node:20-alpine AS frontend-builder
+FROM node:lts-alpine AS frontend-builder
 WORKDIR /src
 
 # Install git and pnpm
@@ -22,7 +22,7 @@ RUN pnpm run build
 # ==========================================
 # STAGE 2: Build the Go Backend
 # ==========================================
-FROM golang:1.22-alpine AS backend-builder
+FROM golang:alpine AS backend-builder
 WORKDIR /src
 
 # Install Go build dependencies and Mage (Vikunja's build tool)
