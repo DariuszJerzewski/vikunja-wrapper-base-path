@@ -5,16 +5,15 @@ on:
     branches:
       - main
   schedule:
-    # Runs daily at 03:00 UTC
     - cron: '0 3 * * *'
-  workflow_dispatch: # Kept as a fallback just in case
+  workflow_dispatch: 
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write # Required to push to GHCR
+      packages: write
 
     steps:
       - name: Checkout repository
@@ -35,5 +34,4 @@ jobs:
         with:
           context: .
           push: true
-          # Converts repository name to lowercase automatically (Docker requires lowercase tags)
-          tags: ghcr.io/${{ github.repository_owner }}/vikunja-subpath:latest
+          tags: ghcr.io/dariuszjerzewski/vikunja-wrapper-base-path:latest
